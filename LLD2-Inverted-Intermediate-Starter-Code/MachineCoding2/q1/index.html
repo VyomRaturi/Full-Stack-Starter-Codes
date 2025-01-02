@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Filter</title>
+  </head>
+  <body>
+    <select id="genreSelect">
+      <option value="none">Select Genre</option>
+      <option value="action">Action</option>
+      <option value="drama">Drama</option>
+      <option value="comedy">Comedy</option>
+    </select>
+
+    <div class="movies">
+      <div class="movie" data-category="action">
+        <p>Movie 1 - Action</p>
+      </div>
+      <div class="movie" data-category="comedy">
+        <p>Movie 2 - Comedy</p>
+      </div>
+      <div class="movie" data-category="drama">
+        <p>Movie 3 - Drama</p>
+      </div>
+      <div class="movie" data-category="action">
+        <p>Movie 4 - Action</p>
+      </div>
+    </div>
+
+    <script>
+      const genreSelect = document.querySelector("#genreSelect");
+      const movieCards = document.querySelectorAll(".movie");
+
+      // TODO: Implement the filter function
+    </script>
+  </body>
+</html>
