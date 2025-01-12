@@ -1,0 +1,15 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.color-box {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  display: inline-block;
+}
