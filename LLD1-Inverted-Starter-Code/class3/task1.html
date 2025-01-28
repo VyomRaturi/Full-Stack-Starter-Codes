@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CSS Example</title>
-    <link rel="stylesheet" href="./style.css">
     <style>
-        /* Internal CSS   */h1{color: blue;}
-        .red{
-            color: red;
-        }
-        .yellowBackground{
-            background-color: yellow;
-        }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div>
+      <!-- Style this h1 using external css id selector-->
+      <h1 id="h1">Welcome to Scaler</h1>
 
-<div>
-    <h1>Welcome to Scaler</h1>
+      <!-- Style this h2 using inline css -->
+      <h2>I hope you are Doing good</h2>
 
-    <!-- Inline CSS -->
-    <h2 style="color: yellow;">I hope you are Doing good</h2>
-    <h3 class=" red yellowBackground">See you Again!</h3> 
-
-</div>
-
-</body>
+      <!-- Style this h3 using internal css class selector -->
+      <h3 class="red yellowBackground">See you Again!</h3>
+    </div>
+  </body>
 </html>
