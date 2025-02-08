@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card-stack {
+        height: 300px;
+        width: 100%;
+      }
+
+      .card {
+        width: 200px;
+        height: 250px;
+        padding: 5px;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        font-size:  1.2rem;
+      }
+
+      .card-stack :nth-child(1) {
+        background: red;
+      }
+      .card:nth-child(2) {
+        background: blue;
+      }
+      .card:nth-child(3) {
+        background: green;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card-stack">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+      <div class="card">Card 3</div>
+    </div>
+  </body>
+</html>
