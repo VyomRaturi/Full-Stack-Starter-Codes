@@ -110,6 +110,7 @@ toolboxColors.forEach(function (colorElem) {
 
 
 // Task 8: Handle ticket lock/unlock functionality
+// - Modify the html of tickets to include a lock icon with class `ticket-lock` (refer the html file for structure).
 // - Write a function `handleLock(ticket)`.
 // - Inside the function, find the lock icon and task area in the ticket.
 // - Add a "click" event listener to the lock icon.
