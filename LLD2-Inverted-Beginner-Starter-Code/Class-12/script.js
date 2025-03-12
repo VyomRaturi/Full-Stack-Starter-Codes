@@ -1,57 +1,49 @@
 // Buttons and Flags
-let addBtn = document.querySelector(".add-btn");
-let removeBtn = document.querySelector(".remove-btn");
-let modalCont = document.querySelector(".modal-cont");
-let mainCont = document.querySelector(".main-cont");
-let textAreaCont = document.querySelector(".textArea-cont");
-let allPriorityColors = document.querySelectorAll(".priority-color");
-
-// Available Colors for Tickets
-let colors = ["lightpink", "lightgreen", "lightblue", "black"];
-
-// Toolbox Colors
-let toolboxColors = document.querySelectorAll(".color");
-
-// Lock and Unlock Classes
-let lockClass = "fa-lock"; // closed lock
-let unlockClass = "fa-lock-open"; // open lock
-
-// Flags
+let addBtn = document.querySelector('.add-btn');
+let removeBtn = document.querySelector('.remove-btn');
 let addTaskFlag = false;
 let removeTaskFlag = false;
 
-// Default Priority Color
-let modalPriorityColor = colors[colors.length - 1];
+// Elements for Modal pop-up box and text area
+let modalCont = document.querySelector('.modal-cont');
+let textAreaCont = document.querySelector('.textArea-cont');
 
-// Tickets Array to Store Tickets
-let ticketsArr = [];
+// Elements for Tickets
+let mainCont = document.querySelector('.main-cont');
 
-/* ------------------------- Code Covered in the Last Class ------------------------- */
+// Elements for Color Selection
+let allPriorityColors = document.querySelectorAll('.priority-color');
+let colors = ["lightpink", "lightgreen", "lightblue", "black"];
+let modalPriorityColor = colors[colors.length - 1]; // Default color for tickets
 
-// Task 1: Toggle modal visibility
-addBtn.addEventListener("click", function () {
+// Task 1: Toggle the visibility of the modal
+// - When the "Add" button is clicked, toggle the `addTaskFlag`.
+// - You can achieve this by changing the `display` property of the `modalCont`.
+addBtn.addEventListener('click', function () {
   addTaskFlag = !addTaskFlag;
 
-  if (addTaskFlag == true) {
-    modalCont.style.display = "flex";
+  if (addTaskFlag) {
+    modalCont.style.display = 'flex';
   } else {
-    modalCont.style.display = "none";
+    modalCont.style.display = 'none';
   }
 });
 
-// Task 2: Select color for task
+// Task 2: Handle color selection for the ticket
+// - Add event listeners to each color element in `allPriorityColors`.
+// - When clicked, remove the "active" class from all colors and add it to the clicked one.
+// - Update the `modalPriorityColor` with the selected color.
 allPriorityColors.forEach(function (colorElem) {
   colorElem.addEventListener('click', function () {
-    allPriorityColors.forEach(function (priorityElem) {
-      priorityElem.classList.remove('active');
+    allPriorityColors.forEach(function (priorityColorElem) {
+      priorityColorElem.classList.remove('active');
     });
+
     colorElem.classList.add('active');
 
     modalPriorityColor = colorElem.classList[0];
   });
 });
-
-/* ---------------------- New Code for the Next Class ---------------------- */
 
 // Task 3: Add tickets using the "Shift" key
 // - Add an event listener to `modalCont` for the "keydown" event.
@@ -90,44 +82,8 @@ function handleRemoval(ticket) {
   // IMPLEMENT HERE
 }
 
-// Task 7: Filter tickets by color
-// - Loop through each color element in `toolboxColors`.
-// - Add a "click" event listener to each color element.
-// - On click, retrieve the selected color and filter the tickets by matching color.
-//   - Loop through all tickets and check if the color band matches the selected color.
-//   - Display matching tickets and hide others.
-// - Add a "dblclick" event listener to reset the filter.
-//   - Show all tickets again when double-clicked.
-toolboxColors.forEach(function (colorElem) {
-  // Single-click to filter tickets
-  colorElem.addEventListener("click", function () {
-  });
 
-  // Double-click to reset filters
-  colorElem.addEventListener("dblclick", function () {
-  });
-});
-
-
-// Task 8: Handle ticket lock/unlock functionality
-// - Modify the html of tickets to include a lock icon with class `ticket-lock` (refer the html file for structure).
-// - Write a function `handleLock(ticket)`.
-// - Inside the function, find the lock icon and task area in the ticket.
-// - Add a "click" event listener to the lock icon.
-// - When clicked, toggle between `lockClass` and `unlockClass`.
-//   - If locked, make the task area `contenteditable=false`.
-//   - If unlocked, make the task area `contenteditable=true`.
-function handleLock(ticket) {
-  let ticketLockElem = ticket.querySelector(".ticket-lock");
-  let ticketLockIcon = ticketLockElem.children[0];
-  let ticketTaskArea = ticket.querySelector(".task-area");
-}
-
-// Task 9: Cycle through ticket colors
-// - Write a function `handleColor(ticket)`.
-// - Inside the function, find the color band in the ticket.
-// - Add a "click" event listener to the color band.
-// - When clicked, cycle through the `colors` array to update the ticket's color.
-function handleColor(ticket) {
-  let ticketColorBand = ticket.querySelector(".ticket-color");
-}
+// Toggle modal visibility (Task 1).
+// Add tickets to the UI (Task 2 to Task 4).
+// Enable and disable remove mode (Task 5).
+// Remove tickets when in remove mode (Task 6).

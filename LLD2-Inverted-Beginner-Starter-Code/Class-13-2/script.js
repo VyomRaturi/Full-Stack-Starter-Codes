@@ -92,10 +92,15 @@ function createTicket(ticketColor, ticketID, ticketTask) {
   <div class="ticket-color" style="background-color: ${ticketColor};"></div>
   <div class="ticket-id">${ticketID}</div>
   <div class="task-area">${ticketTask}</div>
+  <div class="ticket-lock">
+    <i class="fa-solid fa-lock"></i>
+  </div>
 `;
 
   mainCont.appendChild(ticketCont);
   handleRemoval(ticketCont);
+  handleLock(ticketCont);
+  handleColor(ticketCont);
 }
 
 // Task 5: Enable or disable ticket removal mode
@@ -139,15 +144,32 @@ function handleRemoval(ticket) {
 toolboxColors.forEach(function (colorElem) {
   // Single-click to filter tickets
   colorElem.addEventListener("click", function () {
+    const allTicktes = document.querySelectorAll('.ticket-cont')
+    const selectedColor = colorElem.classList[0]
+
+    allTicktes.forEach(function (ticket) {
+      const tikcetColorBand = ticket.querySelector('.ticket-color')
+      if (tikcetColorBand.style.backgroundColor == selectedColor) {
+        ticket.style.display = 'block'
+      }
+      else {
+        ticket.style.display = 'none'
+      }
+    })
   });
 
   // Double-click to reset filters
   colorElem.addEventListener("dblclick", function () {
+    const allTicktes = document.querySelectorAll('.ticket-cont')
+    allTicktes.forEach(function (ticket) {
+      ticket.style.display = 'block'
+    })
   });
 });
 
 
 // Task 8: Handle ticket lock/unlock functionality
+// - Modify the html of tickets to include a lock icon with class `ticket-lock` (refer the html file for structure).
 // - Write a function `handleLock(ticket)`.
 // - Inside the function, find the lock icon and task area in the ticket.
 // - Add a "click" event listener to the lock icon.
@@ -158,6 +180,18 @@ function handleLock(ticket) {
   let ticketLockElem = ticket.querySelector(".ticket-lock");
   let ticketLockIcon = ticketLockElem.children[0];
   let ticketTaskArea = ticket.querySelector(".task-area");
+
+  ticketLockIcon.addEventListener("click", function () {
+    if (ticketLockIcon.classList.contains(lockClass)) {
+      ticketLockIcon.classList.remove(lockClass);
+      ticketLockIcon.classList.add(unlockClass);
+      ticketTaskArea.setAttribute("contenteditable", "true");
+    } else {
+      ticketLockIcon.classList.remove(unlockClass);
+      ticketLockIcon.classList.add(lockClass);
+      ticketTaskArea.setAttribute("contenteditable", "false");
+    }
+  });
 }
 
 // Task 9: Cycle through ticket colors
@@ -167,6 +201,40 @@ function handleLock(ticket) {
 // - When clicked, cycle through the `colors` array to update the ticket's color.
 function handleColor(ticket) {
   let ticketColorBand = ticket.querySelector(".ticket-color");
+
+  ticketColorBand.addEventListener("click", function () {
+    let currentColor = ticketColorBand.style.backgroundColor;
+    let currentColorIndex = colors.indexOf(currentColor);
+    currentColorIndex++;
+    let newColorIndex = currentColorIndex % colors.length;
+    ticketColorBand.style.backgroundColor = colors[newColorIndex];
+  });
+}
+
+// Task 10: Maintain an array of tickets
+// - Modify the above functions to maintain an array of tickets.
+//   Task 10.1:
+//     - When a ticket is created, add it to the `ticketsArr`.
+//     - When a ticket is removed, remove it from the `ticketsArr`.
+//   Task 10.2:
+//     - When locking/unlocking a ticket, update the `ticketsArr` with the new task content.
+//     - When changing the color of a ticket, update the `ticketsArr` with the new color.
+
+// Task 11: Save tickets to local storage
+// - Write a function `saveTickets()`.
+// - Inside the function, convert the `ticketsArr` to a JSON string.
+// - Save the JSON string to local storage with the key "tickets".
+// - Call this function whenever a ticket is added, removed, or modified.
+function saveTickets() {
+}
+
+// Task 12: Load tickets from local storage
+// - Write a function `loadTickets()`.
+// - Inside the function, retrieve the JSON string from local storage with the key "tickets".
+// - Convert the JSON string to an array and store it in `ticketsArr`.
+// - Loop through the `ticketsArr` and create tickets using the stored data.
+// - Call this function whenever the page is loaded.
+function loadTickets() {
 }
 
 // Toggle modal visibility (Task 1).
