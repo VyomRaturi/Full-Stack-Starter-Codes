@@ -1,30 +1,37 @@
-import React, { useEffect, useState } from "react";
-import MovieCard from "./MovieCard";
-import axios from "axios";
-import Pagination from "./Pagination";
+import React, { useState } from "react";
 
 function Movies() {
-  const [movies, setMovies] = useState([]);
+  // setup basic pagination
   const [pageNo, setPageNo] = useState(1);
 
-  //  console.log('this is the movies array' , movies)
+  // go next handler
+  const handleNext = () => {};
+  // go back handler
+  const handlePrevious = () => {};
 
-  // set the functions for adding and removing movies from the watchlist
-
-  const handleNext = () => {
-    setPageNo(pageNo + 1);
-  };
-
-  const handlePrevious = () => {
-    if (pageNo === 1) {
-      setPageNo(pageNo);
-    }
-    setPageNo(pageNo - 1);
-  };
-
-  useEffect(() => {
-    // fetch movies and activate pagination
-  }, []);
+  // we will be using this static list of movies then we will replace it with actual  data fetching logic
+  const [movies, setMovies] = useState([
+    {
+      url: "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+      title: "Movie 1",
+    },
+    {
+      url: "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+      title: "Movie 2",
+    },
+    {
+      url: "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+      title: "Movie 3",
+    },
+    {
+      url: "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+      title: "Movie 4",
+    },
+    {
+      url: "https://fastly.picsum.photos/id/10/2500/1667.jpg?hmac=J04WWC_ebchx3WwzbM-Z4_KC_LeLBWr5LZMaAkWkF68",
+      title: "Movie 5",
+    },
+  ]);
 
   return (
     <div>
@@ -32,23 +39,18 @@ function Movies() {
         <h1>Trending Movies</h1>
       </div>
 
-      <div className="flex justify-evenly flex-wrap gap-8 ">
-        {movies.map((movieObj) => {
-          return (
-            <MovieCard
-              name={movieObj.title}
-              posterPath={movieObj.poster_path}
-              movieObject={movieObj}
-            />
-          );
-        })}
-      </div>
+      {/* Show movies here */}
 
-      <Pagination
-        nextPageFn={handleNext}
-        previosuPageFn={handlePrevious}
-        pageNumber={pageNo}
-      />
+      {/* Pagination */}
+      <div className="bg-gray-400 p-4 h-[50px] w-full mt-8 flex justify-center gap-2">
+        <div className="px-8">
+          <i className="fa-solid fa-arrow-left"></i>
+        </div>
+        <div>{pageNo}</div>
+        <div className="px-8">
+          <i className="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
     </div>
   );
 }

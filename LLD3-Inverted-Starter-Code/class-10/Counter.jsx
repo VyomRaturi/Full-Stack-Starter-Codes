@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 
-function Counter() {
+const Counter = () => {
   const [count, setCount] = useState(0);
-  const incCount = () => {
-    setCount((count) => count + 1);
-  };
-  const decCount = () => {
-    setCount((count) => count - 1);
-  };
-  return (
-    <>
-      <h1>Counter</h1>
-      <button onClick={incCount}>+</button>
-      <h2>Count is {count}</h2>
-      <button onClick={decCount}>-</button>
-    </>
-  );
-}
 
-export default Counter;
+  return (
+    <div className="flex justify-center items-center h-screen">
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setCount(count - 1)}
+      >
+        Decrement
+      </button>
+      <h1 className="mx-4 text-4xl">{count}</h1>
+      <button
+        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        onClick={() => setCount(count + 1)}
+      >
+        Increment
+      </button>
+    </div>
+  );
+};
